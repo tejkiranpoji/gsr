@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+   name: test-tej
+spec:
+  containers:
+    - name: test 
+      image: gcr.io/tej-123/test-123:clone

@@ -1,0 +1,15 @@
+steps:
+ build the container image
+ - name: "gcr.io/cloud-builders/docker"
+   args: ["build", "-t", "gcr.io/tej-123/test-456:clone", "."]
+ push container image
+ - name: "gcr.io/cloud-builders/docker"
+   args: ["push", "gcr.io/tej-123/test-456:clone"]
+ deploy container image to GKE
+ - name: "gcr.io/cloud-builders/gke-deploy"
+   args:
+   - run
+   - --filename=pod.yaml
+   - --location=us-central1-a
+   - --image=gcr.io/tej-123/test-456:clone
+   - --cluster=tej-tets
